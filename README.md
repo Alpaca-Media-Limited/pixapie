@@ -1,10 +1,15 @@
 # Pixapie 🥧
 
+[![npm version](https://img.shields.io/npm/v/pixapie?color=ff8a2b&label=npm)](https://www.npmjs.com/package/pixapie)
+[![license: MIT](https://img.shields.io/badge/license-MIT-22c3b0)](LICENSE)
+[![node](https://img.shields.io/node/v/pixapie?color=22c3b0)](https://nodejs.org)
+[![dependencies: 0](https://img.shields.io/badge/dependencies-0-22c3b0)](package.json)
+
 A tiny, pixel-style API client that runs on your own machine. Send requests, save them for later, and explore JSON responses in a collapsible tree.
 
 No accounts, no cloud, no dependencies. Your requests and API keys never leave your computer, except to go to the API you're calling.
 
-![Pixapie screenshot](docs/screenshot.png)
+![Pixapie screenshot](https://raw.githubusercontent.com/Alpaca-Media-Limited/pixapie/main/docs/screenshot.png)
 
 ## Quick start
 
@@ -51,6 +56,18 @@ On Windows you can also double-click `start.bat`.
 | `PIXAPIE_DATA` env variable | `~/.pixapie` | Folder where saved requests are kept |
 | `--no-open` flag | off | Don't open the browser on start |
 
+On Windows, set environment variables like this instead:
+
+```powershell
+# PowerShell
+$env:PORT=4000; npx pixapie
+```
+
+```bat
+:: Command Prompt
+set PORT=4000 && npx pixapie
+```
+
 Saved requests are stored in plain JSON (`~/.pixapie/saved.json`), so they're easy to back up or share.
 
 ## How it works
@@ -65,6 +82,10 @@ Browsers block web pages from calling most APIs directly (CORS). So Pixapie runs
 ## Using Pixapie offline
 
 Everything works offline except the pixel fonts, which load from Google Fonts. Without them it falls back to your system's monospace font.
+
+## Feedback and contributing
+
+Found a bug or have an idea? [Open an issue](https://github.com/Alpaca-Media-Limited/pixapie/issues). Pull requests are welcome too. Pixapie has no build step, so editing `server.js` or the files in `public/` and running `npm start` is all it takes.
 
 ## License
 
