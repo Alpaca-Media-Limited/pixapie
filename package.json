@@ -1,0 +1,37 @@
+{
+  "name": "pixapie",
+  "version": "1.0.0",
+  "description": "A tiny pixel-style API client that runs locally. Send requests, save them, explore JSON responses.",
+  "keywords": [
+    "api",
+    "api-client",
+    "http",
+    "rest",
+    "postman-alternative",
+    "pixel"
+  ],
+  "author": "Alpaca Media Ltd",
+  "license": "MIT",
+  "homepage": "https://github.com/Alpaca-Media-Limited/pixapie#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alpaca-Media-Limited/pixapie.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alpaca-Media-Limited/pixapie/issues"
+  },
+  "main": "server.js",
+  "bin": {
+    "pixapie": "server.js"
+  },
+  "files": [
+    "server.js",
+    "public"
+  ],
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
