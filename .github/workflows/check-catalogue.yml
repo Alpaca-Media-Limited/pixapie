@@ -1,0 +1,28 @@
+name: Check catalogue
+
+on:
+  pull_request:
+    paths:
+      - 'catalogue/**'
+      - 'public/template-format.js'
+      - 'scripts/validate-catalogue.js'
+  push:
+    branches: [main]
+    paths:
+      - 'catalogue/**'
+      - 'public/template-format.js'
+      - 'scripts/validate-catalogue.js'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate templates
+        run: node scripts/validate-catalogue.js

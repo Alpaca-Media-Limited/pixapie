@@ -12,17 +12,33 @@
 </head>
 <body>
   <div class="app">
-    <aside class="sidebar panel">
+    <aside id="sidebar" class="sidebar panel">
       <div class="brand">Pix<span>api</span>e<svg class="pie" viewBox="0 0 14 12" width="42" height="36" shape-rendering="crispEdges" aria-hidden="true"><rect class="st" x="4" y="0" width="1" height="1"/><rect class="st" x="8" y="0" width="1" height="1"/><rect class="st" x="5" y="1" width="1" height="1"/><rect class="st" x="9" y="1" width="1" height="1"/><rect class="st" x="4" y="2" width="1" height="1"/><rect class="st" x="8" y="2" width="1" height="1"/><rect class="k" x="5" y="3" width="4" height="1"/><rect class="k" x="3" y="4" width="2" height="1"/><rect class="p" x="5" y="4" width="1" height="1"/><rect class="p" x="6" y="4" width="1" height="1"/><rect class="o" x="7" y="4" width="2" height="1"/><rect class="k" x="9" y="4" width="2" height="1"/><rect class="k" x="2" y="5" width="1" height="1"/><rect class="p" x="3" y="5" width="1" height="1"/><rect class="o" x="4" y="5" width="1" height="1"/><rect class="t" x="5" y="5" width="1" height="1"/><rect class="o" x="6" y="5" width="2" height="1"/><rect class="t" x="8" y="5" width="1" height="1"/><rect class="o" x="9" y="5" width="2" height="1"/><rect class="k" x="11" y="5" width="1" height="1"/><rect class="k" x="1" y="6" width="1" height="1"/><rect class="p" x="2" y="6" width="1" height="1"/><rect class="o" x="3" y="6" width="3" height="1"/><rect class="t" x="6" y="6" width="1" height="1"/><rect class="o" x="7" y="6" width="2" height="1"/><rect class="t" x="9" y="6" width="1" height="1"/><rect class="o" x="10" y="6" width="2" height="1"/><rect class="k" x="12" y="6" width="1" height="1"/><rect class="k" x="0" y="7" width="1" height="1"/><rect class="o" x="1" y="7" width="2" height="1"/><rect class="t" x="3" y="7" width="1" height="1"/><rect class="o" x="4" y="7" width="4" height="1"/><rect class="t" x="8" y="7" width="1" height="1"/><rect class="o" x="9" y="7" width="4" height="1"/><rect class="k" x="13" y="7" width="1" height="1"/><rect class="k" x="0" y="8" width="1" height="1"/><rect class="d" x="1" y="8" width="1" height="1"/><rect class="o" x="2" y="8" width="10" height="1"/><rect class="d" x="12" y="8" width="1" height="1"/><rect class="k" x="13" y="8" width="1" height="1"/><rect class="k" x="0" y="9" width="1" height="1"/><rect class="m" x="1" y="9" width="1" height="1"/><rect class="s2" x="2" y="9" width="10" height="1"/><rect class="m" x="12" y="9" width="1" height="1"/><rect class="k" x="13" y="9" width="1" height="1"/><rect class="k" x="1" y="10" width="1" height="1"/><rect class="m" x="2" y="10" width="10" height="1"/><rect class="k" x="12" y="10" width="1" height="1"/><rect class="k" x="2" y="11" width="10" height="1"/></svg></div>
       <button id="newBtn" class="btn btn-block">+ NEW REQUEST</button>
+      <button id="catalogueBtn" class="btn btn-go btn-block">API CATALOGUE</button>
+      <div class="label">ENVIRONMENT</div>
+      <div class="env-bar">
+        <select id="envSelect" class="input input-sm" aria-label="Active environment"></select>
+        <button id="envEditBtn" class="btn btn-sm" title="Manage environments">EDIT</button>
+      </div>
       <input id="filter" class="input" placeholder="filter saved..." spellcheck="false">
-      <div class="label">SAVED</div>
-      <ul id="savedList" class="saved-list"></ul>
+      <div class="saved-head">
+        <div class="label">SAVED</div>
+        <button id="newFolderBtn" class="btn btn-sm" title="New folder">+ FOLDER</button>
+      </div>
+      <ul id="savedList" class="saved-list" aria-label="Saved requests"></ul>
     </aside>
+
+    <div id="sideGutter" class="gutter gutter-col" role="separator" aria-orientation="vertical" aria-controls="sidebar" aria-label="Sidebar size. Drag to resize, click to hide or show" tabindex="0" title="Drag to resize · click to hide or show">
+      <span class="grip"><svg viewBox="0 0 5 3" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v1H0zM1 1h3v1H1zM2 2h1v1H2z" fill="currentColor"/></svg></span>
+    </div>
 
     <main class="main">
       <section class="panel request">
-        <input id="reqName" class="name-input" placeholder="Name your API" spellcheck="false" aria-label="Request name">
+        <div class="name-row">
+          <input id="reqName" class="name-input" placeholder="Name your API" spellcheck="false" aria-label="Request name">
+          <select id="reqFolder" class="input input-sm folder-select" aria-label="Folder" title="Folder"></select>
+        </div>
 
         <div class="url-bar">
           <select id="method" class="input method" aria-label="Method">
@@ -39,13 +55,20 @@
           <button id="saveBtn" class="btn" title="Ctrl+S">SAVE</button>
           <button id="saveNewBtn" class="btn btn-ghost" title="Save as a new request (Ctrl+Shift+S)" hidden>SAVE NEW</button>
         </div>
+        <div id="urlPreview" class="url-preview" hidden></div>
 
         <div class="tabs">
-          <button class="tab active" data-tab="headers">HEADERS <span id="headerCount" class="count"></span></button>
+          <button class="tab active" data-tab="params">PARAMS <span id="paramCount" class="count"></span></button>
+          <button class="tab" data-tab="headers">HEADERS <span id="headerCount" class="count"></span></button>
           <button class="tab" data-tab="body">BODY</button>
         </div>
 
-        <div class="tab-pane active" data-pane="headers">
+        <div class="tab-pane active" data-pane="params">
+          <div id="paramRows" class="kv"></div>
+          <button id="addParam" class="btn btn-sm">+ ADD PARAM</button>
+        </div>
+
+        <div class="tab-pane" data-pane="headers">
           <div id="headerRows" class="kv"></div>
           <button id="addHeader" class="btn btn-sm">+ ADD HEADER</button>
         </div>
@@ -70,6 +93,10 @@
           <div id="noBody" class="empty-sm">This request has no body.</div>
         </div>
       </section>
+
+      <div id="reqGutter" class="gutter gutter-row" role="separator" aria-orientation="horizontal" aria-label="Request panel size. Drag to resize, click to fold the request tabs away or back" tabindex="0" title="Drag to resize · click to fold away or back">
+        <span class="grip"><svg viewBox="0 0 5 3" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v1H0zM1 1h3v1H1zM2 2h1v1H2z" fill="currentColor"/></svg></span>
+      </div>
 
       <section class="panel response">
         <div class="resp-head">
@@ -122,7 +149,57 @@
     <option value="Bearer "></option>
   </datalist>
 
+  <dialog id="envDialog" class="dialog" aria-labelledby="envDialogTitle">
+    <div class="dialog-head">
+      <div id="envDialogTitle" class="label">ENVIRONMENTS</div>
+      <button id="envClose" class="icon-btn" title="Close">X</button>
+    </div>
+    <div class="env-layout">
+      <div class="env-side">
+        <ul id="envList" class="env-list"></ul>
+        <button id="envAdd" class="btn btn-sm btn-block">+ NEW ENVIRONMENT</button>
+      </div>
+      <div id="envMain" class="env-main">
+        <div class="env-name-row">
+          <input id="envName" class="name-input" placeholder="Name your environment" spellcheck="false" aria-label="Environment name">
+          <button id="envDelete" class="btn btn-sm btn-danger">DELETE</button>
+        </div>
+        <div class="hint">Use a variable anywhere as <b>{{name}}</b>: in the URL, params, headers or body.</div>
+        <div id="envRows" class="kv"></div>
+        <button id="envAddVar" class="btn btn-sm">+ ADD VARIABLE</button>
+      </div>
+      <div id="envEmpty" class="empty-sm">No environments yet. Create one, e.g. "Dev" with <b>baseUrl</b> = http://localhost:8080, then call <b>{{baseUrl}}/users</b>.</div>
+    </div>
+    <div class="dialog-foot">
+      <button id="envDone" class="btn btn-go">DONE</button>
+    </div>
+  </dialog>
+
+  <dialog id="catDialog" class="dialog dialog-wide" aria-labelledby="catTitle">
+    <div class="dialog-head">
+      <div id="catTitle" class="label">API CATALOGUE</div>
+      <div class="cat-tools">
+        <button id="catNew" class="btn btn-sm">+ NEW TEMPLATE</button>
+        <button id="catImport" class="btn btn-sm">IMPORT</button>
+        <input id="catImportFile" type="file" accept=".json,application/json" hidden>
+        <button id="catClose" class="icon-btn" title="Close">X</button>
+      </div>
+    </div>
+    <div class="cat-layout">
+      <div class="cat-side">
+        <input id="catSearch" class="input" placeholder="search APIs..." spellcheck="false" aria-label="Search APIs">
+        <div id="catChips" class="chips"></div>
+        <ul id="catList" class="cat-list"></ul>
+      </div>
+      <div id="catDetail" class="cat-detail"></div>
+    </div>
+  </dialog>
+  <datalist id="catCategories"></datalist>
+
   <div id="toast" class="toast" hidden></div>
+  <script src="template-format.js"></script>
   <script src="app.js"></script>
+  <script src="catalogue.js"></script>
+  <script src="layout.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+{
+  "name": "Agify, Genderize & Nationalize",
+  "category": "Data",
+  "description": "Three small APIs that make a statistical guess from a first name: age, gender or nationality.\n\nThe free tier allows 100 names a day, shared across all three.",
+  "docs": "https://agify.io/documentation",
+  "auth": "None for up to 100 names a day",
+  "requests": [
+    {
+      "name": "Guess age",
+      "method": "GET",
+      "url": "https://api.agify.io?name=alex",
+      "description": "Predicted age for a name, and how many people the guess is based on.",
+      "params": [
+        { "key": "name", "value": "alex", "on": true, "required": true, "description": "A first name" },
+        { "key": "country_id", "value": "GB", "on": false, "required": false, "description": "Narrow the guess to one country" }
+      ]
+    },
+    {
+      "name": "Guess gender",
+      "method": "GET",
+      "url": "https://api.genderize.io?name=alex",
+      "description": "Predicted gender for a name, with a probability between 0 and 1.",
+      "params": [
+        { "key": "name", "value": "alex", "on": true, "required": true, "description": "A first name" }
+      ]
+    },
+    {
+      "name": "Guess nationality",
+      "method": "GET",
+      "url": "https://api.nationalize.io?name=alex",
+      "description": "The most likely countries for a name, each with a probability.",
+      "params": [
+        { "key": "name", "value": "alex", "on": true, "required": true, "description": "A first name" }
+      ]
+    },
+    {
+      "name": "Several names at once",
+      "method": "GET",
+      "url": "https://api.agify.io?name[]=anna&name[]=peter",
+      "description": "Repeat name[] to guess up to 10 names in one request.",
+      "params": [
+        { "key": "name[]", "value": "anna", "on": true, "required": true, "description": "First name" },
+        { "key": "name[]", "value": "peter", "on": true, "required": false, "description": "Another name" }
+      ]
+    }
+  ]
+}

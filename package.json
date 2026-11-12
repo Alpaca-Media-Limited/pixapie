@@ -26,10 +26,12 @@
   },
   "files": [
     "server.js",
-    "public"
+    "public",
+    "catalogue"
   ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check-catalogue": "node scripts/validate-catalogue.js"
   },
   "engines": {
     "node": ">=18"

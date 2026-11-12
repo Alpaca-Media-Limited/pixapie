@@ -1,0 +1,59 @@
+{
+  "name": "Open-Meteo",
+  "category": "Weather",
+  "description": "Free weather forecasts for anywhere in the world, with no key needed for non-commercial use.\n\nThe requests use {{latitude}} and {{longitude}} variables, so add them to your environment once and every request uses your location. Use \"Find a place\" to look up coordinates.",
+  "docs": "https://open-meteo.com/en/docs",
+  "auth": "None for non-commercial use",
+  "variables": [
+    { "key": "latitude", "value": "51.51", "description": "Latitude of your location (51.51 is London)" },
+    { "key": "longitude", "value": "-0.13", "description": "Longitude of your location (-0.13 is London)" }
+  ],
+  "requests": [
+    {
+      "name": "Current weather",
+      "method": "GET",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitude}}&current=temperature_2m,wind_speed_10m,weather_code",
+      "description": "The weather right now. Temperatures are in °C and wind speed in km/h.",
+      "params": [
+        { "key": "latitude", "value": "{{latitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "longitude", "value": "{{longitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "current", "value": "temperature_2m,wind_speed_10m,weather_code", "on": true, "required": false, "description": "Comma-separated list of what to return" },
+        { "key": "temperature_unit", "value": "fahrenheit", "on": false, "required": false, "description": "Switch on for °F" }
+      ]
+    },
+    {
+      "name": "Hourly forecast",
+      "method": "GET",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitude}}&hourly=temperature_2m,precipitation_probability&forecast_days=1",
+      "description": "Temperature and chance of rain for each hour of today.",
+      "params": [
+        { "key": "latitude", "value": "{{latitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "longitude", "value": "{{longitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "hourly", "value": "temperature_2m,precipitation_probability", "on": true, "required": false, "description": "What to return for each hour" },
+        { "key": "forecast_days", "value": "1", "on": true, "required": false, "description": "How many days ahead (up to 16)" }
+      ]
+    },
+    {
+      "name": "7-day forecast",
+      "method": "GET",
+      "url": "https://api.open-meteo.com/v1/forecast?latitude={{latitude}}&longitude={{longitude}}&daily=temperature_2m_max,temperature_2m_min&timezone=auto",
+      "description": "Highs and lows for the next week, in your location's timezone.",
+      "params": [
+        { "key": "latitude", "value": "{{latitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "longitude", "value": "{{longitude}}", "on": true, "required": true, "description": "Where to forecast" },
+        { "key": "daily", "value": "temperature_2m_max,temperature_2m_min", "on": true, "required": false, "description": "What to return for each day" },
+        { "key": "timezone", "value": "auto", "on": true, "required": false, "description": "auto uses the location's own timezone" }
+      ]
+    },
+    {
+      "name": "Find a place",
+      "method": "GET",
+      "url": "https://geocoding-api.open-meteo.com/v1/search?name=London&count=3",
+      "description": "Looks up a place by name and returns its latitude and longitude, to put in your environment.",
+      "params": [
+        { "key": "name", "value": "London", "on": true, "required": true, "description": "The place to search for" },
+        { "key": "count", "value": "3", "on": true, "required": false, "description": "How many matches to return" }
+      ]
+    }
+  ]
+}

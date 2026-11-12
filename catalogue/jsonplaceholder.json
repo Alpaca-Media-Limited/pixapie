@@ -1,0 +1,73 @@
+{
+  "name": "JSONPlaceholder",
+  "category": "Testing",
+  "description": "A free fake REST API for testing and prototyping, with posts, comments, users and todos.\n\nEvery method works, but writes are faked: you get a realistic response and nothing is actually saved. That makes it a safe place to practise POST, PUT, PATCH and DELETE.",
+  "docs": "https://jsonplaceholder.typicode.com/guide/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "List posts",
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "description": "Returns all 100 posts. Switch on userId to get just one user's posts.",
+      "params": [
+        { "key": "userId", "value": "1", "on": false, "required": false, "description": "Only posts by this user (1 to 10)" }
+      ]
+    },
+    {
+      "name": "Get a post",
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "description": "Returns one post by its id (1 to 100) at the end of the URL."
+    },
+    {
+      "name": "Comments on a post",
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/comments?postId=1",
+      "description": "Returns the comments on one post.",
+      "params": [
+        { "key": "postId", "value": "1", "on": true, "required": false, "description": "The post to get comments for" }
+      ]
+    },
+    {
+      "name": "Create a post",
+      "method": "POST",
+      "url": "https://jsonplaceholder.typicode.com/posts",
+      "description": "Pretends to create a post and sends it back with a new id (always 101).",
+      "bodyType": "json",
+      "body": "{\n  \"title\": \"Hello from Pixapie\",\n  \"body\": \"My first post\",\n  \"userId\": 1\n}"
+    },
+    {
+      "name": "Replace a post",
+      "method": "PUT",
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "description": "Replaces the whole post. Any field you leave out is missing from the response.",
+      "bodyType": "json",
+      "body": "{\n  \"id\": 1,\n  \"title\": \"A brand new title\",\n  \"body\": \"A brand new body\",\n  \"userId\": 1\n}"
+    },
+    {
+      "name": "Update part of a post",
+      "method": "PATCH",
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "description": "Changes only the fields you send and keeps the rest.",
+      "bodyType": "json",
+      "body": "{\n  \"title\": \"Just the title changed\"\n}"
+    },
+    {
+      "name": "Delete a post",
+      "method": "DELETE",
+      "url": "https://jsonplaceholder.typicode.com/posts/1",
+      "description": "Pretends to delete the post. Responds with 200 and an empty object."
+    },
+    {
+      "name": "List todos",
+      "method": "GET",
+      "url": "https://jsonplaceholder.typicode.com/todos",
+      "description": "Returns 200 todos. Switch on the params to filter them.",
+      "params": [
+        { "key": "userId", "value": "1", "on": false, "required": false, "description": "Only this user's todos" },
+        { "key": "completed", "value": "false", "on": false, "required": false, "description": "true for done, false for still to do" }
+      ]
+    }
+  ]
+}

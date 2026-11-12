@@ -1,0 +1,48 @@
+{
+  "name": "Reqres",
+  "category": "Testing",
+  "description": "A fake user API with realistic responses, including pagination, errors and a pretend login. Writes are faked, so nothing is saved.",
+  "docs": "https://reqres.in/",
+  "auth": "None (the login request returns a fake token)",
+  "requests": [
+    {
+      "name": "List users",
+      "method": "GET",
+      "url": "https://reqres.in/api/users?page=2",
+      "description": "Returns one page of users, with paging info (page, per_page, total).",
+      "params": [
+        { "key": "page", "value": "2", "on": true, "required": false, "description": "Which page (1 or 2)" },
+        { "key": "per_page", "value": "3", "on": false, "required": false, "description": "How many users per page" },
+        { "key": "delay", "value": "2", "on": false, "required": false, "description": "Seconds to wait before answering" }
+      ]
+    },
+    {
+      "name": "Get a user",
+      "method": "GET",
+      "url": "https://reqres.in/api/users/2",
+      "description": "Returns one user by id."
+    },
+    {
+      "name": "User not found",
+      "method": "GET",
+      "url": "https://reqres.in/api/users/23",
+      "description": "A user that doesn't exist, so you can see a 404."
+    },
+    {
+      "name": "Create a user",
+      "method": "POST",
+      "url": "https://reqres.in/api/users",
+      "description": "Pretends to create a user. Responds with 201, an id and createdAt.",
+      "bodyType": "json",
+      "body": "{\n  \"name\": \"Pip\",\n  \"job\": \"Baker\"\n}"
+    },
+    {
+      "name": "Log in",
+      "method": "POST",
+      "url": "https://reqres.in/api/login",
+      "description": "Returns a fake token for this demo account. Remove the password to see a 400 error.",
+      "bodyType": "json",
+      "body": "{\n  \"email\": \"eve.holt@reqres.in\",\n  \"password\": \"cityslicka\"\n}"
+    }
+  ]
+}

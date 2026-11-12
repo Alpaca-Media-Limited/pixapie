@@ -1,0 +1,36 @@
+{
+  "name": "SWAPI (Star Wars API)",
+  "category": "Fun",
+  "description": "People, planets, films, starships and species from the Star Wars films. Results link to each other by URL, so you can follow them from one request to the next.",
+  "docs": "https://swapi.dev/documentation",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Get a person",
+      "method": "GET",
+      "url": "https://swapi.dev/api/people/1/",
+      "description": "One character by number. 1 is Luke Skywalker."
+    },
+    {
+      "name": "Search people",
+      "method": "GET",
+      "url": "https://swapi.dev/api/people/?search=skywalker",
+      "description": "Characters whose name contains a word.",
+      "params": [
+        { "key": "search", "value": "skywalker", "on": true, "required": false, "description": "Part of a name" }
+      ]
+    },
+    {
+      "name": "Get a planet",
+      "method": "GET",
+      "url": "https://swapi.dev/api/planets/1/",
+      "description": "One planet by number. 1 is Tatooine."
+    },
+    {
+      "name": "List films",
+      "method": "GET",
+      "url": "https://swapi.dev/api/films/",
+      "description": "Every film, with links to its characters, planets and ships."
+    }
+  ]
+}

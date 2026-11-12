@@ -33,11 +33,16 @@ On Windows you can also double-click `start.bat`.
 
 ## Features
 
+- **API catalogue:** 14 free, open APIs with ready-to-send requests and plain-English docs. Make your own templates from saved requests, export them, or submit them to the library
 - **Every method:** GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS
+- **Params:** edit the query string as rows. They stay in sync with the URL both ways, and switched-off params are kept for later
+- **Environments:** define variables like `baseUrl` or `token` per environment (Dev, Live…) and use them anywhere as `{{baseUrl}}`. A preview under the URL shows where the request will actually go
 - **Headers:** add, remove, or switch them on and off, with suggestions for common ones
 - **Body:** JSON, text, XML, or form fields. The right `Content-Type` is set automatically unless you set your own
 - **Saved requests:** save, update, save as new, filter, delete
+- **Folders:** group saved requests into folders and subfolders, nested as deep as you like. Drag requests or folders to move them, or pick a folder next to the request name
 - **JSON tree:** expand and collapse any level, or all at once. Raw view and response headers too
+- **Image previews:** image links in a JSON response show as thumbnails you can click to open, and image responses are shown as pictures
 - **Status, time, and size** for every response
 
 ### Keyboard shortcuts
@@ -53,7 +58,7 @@ On Windows you can also double-click `start.bat`.
 | Setting | Default | What it does |
 |---|---|---|
 | `PORT` env variable | `3030` | Port to run on, e.g. `PORT=4000 npx pixapie` |
-| `PIXAPIE_DATA` env variable | `~/.pixapie` | Folder where saved requests are kept |
+| `PIXAPIE_DATA` env variable | `~/.pixapie` | Folder where saved requests and environments are kept |
 | `--no-open` flag | off | Don't open the browser on start |
 
 On Windows, set environment variables like this instead:
@@ -68,7 +73,7 @@ $env:PORT=4000; npx pixapie
 set PORT=4000 && npx pixapie
 ```
 
-Saved requests are stored in plain JSON (`~/.pixapie/saved.json`), so they're easy to back up or share.
+Saved requests and environments are stored in plain JSON (`~/.pixapie/saved.json` and `~/.pixapie/environments.json`), so they're easy to back up or share. Environments often hold API keys, so be careful who you share that file with.
 
 ## How it works
 
@@ -85,7 +90,11 @@ Everything works offline except the pixel fonts, which load from Google Fonts. W
 
 ## Feedback and contributing
 
-Found a bug or have an idea? [Open an issue](https://github.com/Alpaca-Media-Limited/pixapie/issues). Pull requests are welcome too. Pixapie has no build step, so editing `server.js` or the files in `public/` and running `npm start` is all it takes.
+Found a bug or have an idea? [Open an issue](https://github.com/Alpaca-Media-Limited/pixapie/issues).
+
+Know a great free API? Add it to the catalogue: build a template in Pixapie and click **SUBMIT TO LIBRARY**, or see [CONTRIBUTING.md](CONTRIBUTING.md) for the file format.
+
+Pull requests are welcome too. Pixapie has no build step, so editing `server.js` or the files in `public/` and running `npm start` is all it takes.
 
 ## License
 

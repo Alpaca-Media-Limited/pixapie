@@ -1,0 +1,64 @@
+{
+  "name": "GitHub",
+  "category": "Developer",
+  "description": "The real GitHub REST API. Public data such as users, repositories and search works without signing in, limited to 60 requests an hour.\n\nFor more (5,000 an hour, or private data), create a personal access token on GitHub and add an Authorization header with the value \"Bearer\" followed by your token. Keep the token in an environment variable rather than in a saved request.",
+  "docs": "https://docs.github.com/en/rest",
+  "auth": "Optional: Bearer token",
+  "variables": [
+    { "key": "githubUser", "value": "octocat", "description": "The GitHub username to look up" }
+  ],
+  "requests": [
+    {
+      "name": "Get a user",
+      "method": "GET",
+      "url": "https://api.github.com/users/{{githubUser}}",
+      "description": "Public profile details: name, bio, follower counts and more.",
+      "headers": [
+        { "key": "Accept", "value": "application/vnd.github+json", "on": true, "required": false, "description": "GitHub's recommended response format" },
+        { "key": "X-GitHub-Api-Version", "value": "2022-11-28", "on": true, "required": false, "description": "Pins the API version so responses don't change" }
+      ]
+    },
+    {
+      "name": "A user's repositories",
+      "method": "GET",
+      "url": "https://api.github.com/users/{{githubUser}}/repos?sort=updated&per_page=5",
+      "description": "The user's public repositories, most recently updated first.",
+      "params": [
+        { "key": "sort", "value": "updated", "on": true, "required": false, "description": "created, updated, pushed or full_name" },
+        { "key": "per_page", "value": "5", "on": true, "required": false, "description": "How many per page (up to 100)" }
+      ],
+      "headers": [
+        { "key": "Accept", "value": "application/vnd.github+json", "on": true, "required": false }
+      ]
+    },
+    {
+      "name": "Get a repository",
+      "method": "GET",
+      "url": "https://api.github.com/repos/Alpaca-Media-Limited/pixapie",
+      "description": "Details about one repository: stars, forks, licence, open issues and more. This one is Pixapie's own repo.",
+      "headers": [
+        { "key": "Accept", "value": "application/vnd.github+json", "on": true, "required": false }
+      ]
+    },
+    {
+      "name": "Search repositories",
+      "method": "GET",
+      "url": "https://api.github.com/search/repositories?q=api+client&sort=stars&per_page=5",
+      "description": "Searches all public repositories. The q param supports GitHub's search syntax, e.g. language:go.",
+      "params": [
+        { "key": "q", "value": "api client", "on": true, "required": true, "description": "What to search for" },
+        { "key": "sort", "value": "stars", "on": true, "required": false, "description": "stars, forks or updated" },
+        { "key": "per_page", "value": "5", "on": true, "required": false, "description": "How many results" }
+      ],
+      "headers": [
+        { "key": "Accept", "value": "application/vnd.github+json", "on": true, "required": false }
+      ]
+    },
+    {
+      "name": "Check your rate limit",
+      "method": "GET",
+      "url": "https://api.github.com/rate_limit",
+      "description": "How many requests you have left this hour. Checking it doesn't count against the limit."
+    }
+  ]
+}

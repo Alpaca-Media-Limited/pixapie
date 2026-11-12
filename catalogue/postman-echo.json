@@ -1,0 +1,68 @@
+{
+  "name": "Postman Echo",
+  "category": "Testing",
+  "description": "Sends back whatever you send it: query params, headers, body and form fields.\n\nUse it to check exactly what Pixapie is sending, for example that a header or Content-Type is set the way you expect.",
+  "docs": "https://learning.postman.com/docs/developer/echo-api/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Echo query params",
+      "method": "GET",
+      "url": "https://postman-echo.com/get?foo=bar&hello=world",
+      "description": "Your params come back under \"args\". Add, change or switch off params and send again.",
+      "params": [
+        { "key": "foo", "value": "bar", "on": true, "required": false, "description": "Any name and value you like" },
+        { "key": "hello", "value": "world", "on": true, "required": false, "description": "Any name and value you like" }
+      ]
+    },
+    {
+      "name": "Echo a JSON body",
+      "method": "POST",
+      "url": "https://postman-echo.com/post",
+      "description": "Your JSON comes back under \"data\" (and \"json\"), with the headers that were sent.",
+      "bodyType": "json",
+      "body": "{\n  \"pie\": \"apple\",\n  \"slices\": 8\n}"
+    },
+    {
+      "name": "Echo form fields",
+      "method": "POST",
+      "url": "https://postman-echo.com/post",
+      "description": "Sends a URL-encoded form. The fields come back under \"form\".",
+      "bodyType": "form",
+      "form": [
+        { "key": "name", "value": "Pixapie", "on": true, "required": false },
+        { "key": "flavour", "value": "cherry", "on": true, "required": false }
+      ]
+    },
+    {
+      "name": "Echo headers",
+      "method": "GET",
+      "url": "https://postman-echo.com/headers",
+      "description": "Returns every header it received, including the ones added for you.",
+      "headers": [
+        { "key": "X-Hello", "value": "from Pixapie", "on": true, "required": false, "description": "Any custom header" }
+      ]
+    },
+    {
+      "name": "Get a status code",
+      "method": "GET",
+      "url": "https://postman-echo.com/status/404",
+      "description": "Responds with the status code at the end of the URL. Change 404 to any code to see how it looks."
+    },
+    {
+      "name": "Slow response",
+      "method": "GET",
+      "url": "https://postman-echo.com/delay/2",
+      "description": "Waits the number of seconds at the end of the URL (up to 10) before answering. Good for checking the TIME shown."
+    },
+    {
+      "name": "Basic auth",
+      "method": "GET",
+      "url": "https://postman-echo.com/basic-auth",
+      "description": "Checks a Basic auth header. The value is \"postman:password\" encoded in base64. Switch the header off to see a 401.",
+      "headers": [
+        { "key": "Authorization", "value": "Basic cG9zdG1hbjpwYXNzd29yZA==", "on": true, "required": true, "description": "Basic + base64 of username:password" }
+      ]
+    }
+  ]
+}

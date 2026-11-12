@@ -1,0 +1,37 @@
+{
+  "name": "Random User Generator",
+  "category": "Data",
+  "description": "Generates realistic fake people: names, addresses, emails, photos and more. Handy for filling a prototype with test data.",
+  "docs": "https://randomuser.me/documentation",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "One random person",
+      "method": "GET",
+      "url": "https://randomuser.me/api/",
+      "description": "A different made-up person every time you send it."
+    },
+    {
+      "name": "Several people",
+      "method": "GET",
+      "url": "https://randomuser.me/api/?results=5&nat=gb,us",
+      "description": "A batch of people, with optional filters.",
+      "params": [
+        { "key": "results", "value": "5", "on": true, "required": false, "description": "How many people (up to 5000)" },
+        { "key": "nat", "value": "gb,us", "on": true, "required": false, "description": "Nationalities, e.g. gb, us, dk, fr" },
+        { "key": "gender", "value": "female", "on": false, "required": false, "description": "female or male" },
+        { "key": "seed", "value": "pixapie", "on": false, "required": false, "description": "Same seed gives the same people every time" }
+      ]
+    },
+    {
+      "name": "Only some fields",
+      "method": "GET",
+      "url": "https://randomuser.me/api/?inc=name,email,picture&results=3",
+      "description": "Smaller responses that include just the fields you list.",
+      "params": [
+        { "key": "inc", "value": "name,email,picture", "on": true, "required": false, "description": "Fields to include" },
+        { "key": "results", "value": "3", "on": true, "required": false, "description": "How many people" }
+      ]
+    }
+  ]
+}

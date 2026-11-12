@@ -1,0 +1,33 @@
+{
+  "name": "Official Joke API",
+  "category": "Fun",
+  "description": "Random jokes with a setup and a punchline, including a programming category.",
+  "docs": "https://github.com/15Dkatz/official_joke_api",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Random joke",
+      "method": "GET",
+      "url": "https://official-joke-api.appspot.com/random_joke",
+      "description": "One random joke."
+    },
+    {
+      "name": "Ten jokes",
+      "method": "GET",
+      "url": "https://official-joke-api.appspot.com/random_ten",
+      "description": "Ten random jokes at once."
+    },
+    {
+      "name": "Programming joke",
+      "method": "GET",
+      "url": "https://official-joke-api.appspot.com/jokes/programming/random",
+      "description": "A random joke from one category. Replace programming with any type from \"Joke types\"."
+    },
+    {
+      "name": "Joke types",
+      "method": "GET",
+      "url": "https://official-joke-api.appspot.com/types",
+      "description": "The categories you can ask for."
+    }
+  ]
+}

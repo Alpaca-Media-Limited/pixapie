@@ -1,0 +1,33 @@
+{
+  "name": "Chuck Norris Jokes",
+  "category": "Fun",
+  "description": "A large collection of Chuck Norris facts, with categories and full-text search.",
+  "docs": "https://api.chucknorris.io/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Random joke",
+      "method": "GET",
+      "url": "https://api.chucknorris.io/jokes/random",
+      "description": "One random joke. Switch on category to narrow it down.",
+      "params": [
+        { "key": "category", "value": "dev", "on": false, "required": false, "description": "A category from \"List categories\"" }
+      ]
+    },
+    {
+      "name": "List categories",
+      "method": "GET",
+      "url": "https://api.chucknorris.io/jokes/categories",
+      "description": "All the categories you can filter by."
+    },
+    {
+      "name": "Search jokes",
+      "method": "GET",
+      "url": "https://api.chucknorris.io/jokes/search?query=computer",
+      "description": "Every joke containing a word.",
+      "params": [
+        { "key": "query", "value": "computer", "on": true, "required": true, "description": "The word to search for" }
+      ]
+    }
+  ]
+}

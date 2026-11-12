@@ -1,0 +1,71 @@
+{
+  "name": "httpbingo",
+  "category": "Testing",
+  "description": "An HTTP testing service (a Go version of httpbin). Inspect your requests and ask for specific responses: status codes, redirects, headers, JSON and XML.",
+  "docs": "https://httpbingo.org/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Anything",
+      "method": "POST",
+      "url": "https://httpbingo.org/anything",
+      "description": "Accepts any method and sends back everything about the request: method, args, headers and body.",
+      "bodyType": "json",
+      "body": "{\n  \"hello\": \"world\"\n}"
+    },
+    {
+      "name": "Teapot status",
+      "method": "GET",
+      "url": "https://httpbingo.org/status/418",
+      "description": "Responds with the status code at the end of the URL. 418 is \"I'm a teapot\"."
+    },
+    {
+      "name": "Random UUID",
+      "method": "GET",
+      "url": "https://httpbingo.org/uuid",
+      "description": "Returns a new random UUID every time."
+    },
+    {
+      "name": "Sample JSON",
+      "method": "GET",
+      "url": "https://httpbingo.org/json",
+      "description": "A small nested JSON document. Nice for trying the expand and collapse buttons."
+    },
+    {
+      "name": "Sample XML",
+      "method": "GET",
+      "url": "https://httpbingo.org/xml",
+      "description": "An XML document. Not JSON, so it shows as text."
+    },
+    {
+      "name": "Get an image",
+      "method": "GET",
+      "url": "https://httpbingo.org/image/png",
+      "description": "Responds with a picture instead of text. Change png to jpeg, webp or svg for other formats."
+    },
+    {
+      "name": "Bearer token check",
+      "method": "GET",
+      "url": "https://httpbingo.org/bearer",
+      "description": "Accepts any Bearer token. Switch the header off to see a 401.",
+      "headers": [
+        { "key": "Authorization", "value": "Bearer my-test-token", "on": true, "required": true, "description": "Bearer followed by any token" }
+      ]
+    },
+    {
+      "name": "Set response headers",
+      "method": "GET",
+      "url": "https://httpbingo.org/response-headers?X-Pie=apple",
+      "description": "Every query param becomes a response header. Check the response HEADERS tab.",
+      "params": [
+        { "key": "X-Pie", "value": "apple", "on": true, "required": false, "description": "Any header name and value" }
+      ]
+    },
+    {
+      "name": "Follow redirects",
+      "method": "GET",
+      "url": "https://httpbingo.org/redirect/2",
+      "description": "Redirects twice before landing on a final page. Pixapie follows redirects for you."
+    }
+  ]
+}

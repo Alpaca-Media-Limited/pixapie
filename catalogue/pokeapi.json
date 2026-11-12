@@ -1,0 +1,43 @@
+{
+  "name": "PokéAPI",
+  "category": "Fun",
+  "description": "Everything about Pokémon: species, types, abilities, moves and more. The responses are big and deeply nested, which makes them great for exploring with the JSON tree.",
+  "docs": "https://pokeapi.co/docs/v2",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Get a Pokémon",
+      "method": "GET",
+      "url": "https://pokeapi.co/api/v2/pokemon/pikachu",
+      "description": "Returns one Pokémon by name or number. Try replacing pikachu with bulbasaur or 25."
+    },
+    {
+      "name": "List Pokémon",
+      "method": "GET",
+      "url": "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0",
+      "description": "Returns names and links, a page at a time. Use \"next\" in the response to get the following page.",
+      "params": [
+        { "key": "limit", "value": "20", "on": true, "required": false, "description": "How many to return" },
+        { "key": "offset", "value": "0", "on": true, "required": false, "description": "How many to skip" }
+      ]
+    },
+    {
+      "name": "Species details",
+      "method": "GET",
+      "url": "https://pokeapi.co/api/v2/pokemon-species/pikachu",
+      "description": "Flavour text, evolution chain link, habitat and other species details."
+    },
+    {
+      "name": "Get a type",
+      "method": "GET",
+      "url": "https://pokeapi.co/api/v2/type/electric",
+      "description": "What a type is strong and weak against, and which Pokémon have it."
+    },
+    {
+      "name": "Get an ability",
+      "method": "GET",
+      "url": "https://pokeapi.co/api/v2/ability/static",
+      "description": "What an ability does, and which Pokémon can have it."
+    }
+  ]
+}

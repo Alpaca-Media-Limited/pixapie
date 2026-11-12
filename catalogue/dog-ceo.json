@@ -1,0 +1,33 @@
+{
+  "name": "Dog CEO",
+  "category": "Fun",
+  "description": "Random dog photos from a collection of more than 20,000 images, searchable by breed. Responses contain image links you can open in your browser.",
+  "docs": "https://dog.ceo/dog-api/documentation/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Random dog",
+      "method": "GET",
+      "url": "https://dog.ceo/api/breeds/image/random",
+      "description": "A link to one random dog photo."
+    },
+    {
+      "name": "Several random dogs",
+      "method": "GET",
+      "url": "https://dog.ceo/api/breeds/image/random/3",
+      "description": "Links to several photos. Change the number at the end (up to 50)."
+    },
+    {
+      "name": "Random dog of a breed",
+      "method": "GET",
+      "url": "https://dog.ceo/api/breed/hound/images/random",
+      "description": "A random photo of one breed. Replace hound with any breed from \"List breeds\"."
+    },
+    {
+      "name": "List breeds",
+      "method": "GET",
+      "url": "https://dog.ceo/api/breeds/list/all",
+      "description": "Every breed, with its sub-breeds."
+    }
+  ]
+}

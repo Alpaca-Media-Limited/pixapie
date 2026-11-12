@@ -1,0 +1,36 @@
+{
+  "name": "Cat Facts",
+  "category": "Fun",
+  "description": "Random facts about cats, and a list of cat breeds. Small and simple: a good first API to try.",
+  "docs": "https://catfact.ninja/",
+  "auth": "None",
+  "requests": [
+    {
+      "name": "Random fact",
+      "method": "GET",
+      "url": "https://catfact.ninja/fact",
+      "description": "One random cat fact.",
+      "params": [
+        { "key": "max_length", "value": "80", "on": false, "required": false, "description": "Only facts up to this many characters" }
+      ]
+    },
+    {
+      "name": "List facts",
+      "method": "GET",
+      "url": "https://catfact.ninja/facts?limit=5",
+      "description": "A page of facts, with links to the next page.",
+      "params": [
+        { "key": "limit", "value": "5", "on": true, "required": false, "description": "How many facts per page" }
+      ]
+    },
+    {
+      "name": "List breeds",
+      "method": "GET",
+      "url": "https://catfact.ninja/breeds?limit=5",
+      "description": "Cat breeds with their country, origin, coat and pattern.",
+      "params": [
+        { "key": "limit", "value": "5", "on": true, "required": false, "description": "How many breeds per page" }
+      ]
+    }
+  ]
+}
